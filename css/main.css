@@ -1,0 +1,295 @@
+/* reset */
+
+* {
+    padding: 0px;
+    margin: 0px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* type */
+
+body {
+    font-family: arial, helvetica, sans-serif;
+    text-align: left;
+    font-size: 45px;
+    overflow-x: hidden;
+}
+
+/* structure */
+
+#container {
+	width: 60%;
+	padding: 100px 30px;
+	margin: auto;
+	font-weight: 300;
+}
+
+#container p {
+	margin-bottom: 80px;
+	position: relative;
+}
+
+ul {
+	font-size: 20px;
+	list-style-type: none;
+}
+
+
+
+/* basic hovers */
+
+a {
+	color: black;
+}
+
+a:hover {
+	color: black;
+	text-decoration: none;
+}
+
+#any {
+	color: #ccc;
+}
+
+#any:hover {
+	color: red;
+}
+
+#pizza {
+	width: 50px;
+	display: inline-block;
+	vertical-align: middle;
+
+	-webkit-transition: all .5s ease-in-out; /* transitions make any changes to the element happen over time */
+}
+
+#pizza:hover {
+	-webkit-transform: rotate(720deg);
+}
+
+
+.mouse {
+	color: #ccc;
+}
+
+.mouse:hover {
+	color: black;
+	cursor: url('../img/arrow.png'), auto;
+
+}
+
+/* the ~ selector finds all the elements that are adjacent and follow that item. in this case the span class .c on hover */
+
+/* "c" class elements that are siblings of and subsequent to the "c" you are hovering on */
+
+.c {
+	opacity: 0;
+}
+
+.c:hover ~ .c, .c:hover {
+	opacity: 1;
+} 
+
+
+/* hover states for images */
+
+#image-paragraph img {
+	z-index: 0;
+	position: absolute;
+	max-width: 200px;
+	opacity: 0;
+	-webkit-transition: all 1s ease-in-out;
+}
+
+p#image-paragraph:hover img {
+	opacity: 1;
+}
+
+/* each image is given its own transition delay, so they occur in an order when hovered on */
+
+p#image-paragraph #image-1 {
+	top: 10px;
+	left: 30px;
+	-webkit-transition-delay: 0s;	
+}
+
+p#image-paragraph #image-2 {
+	right: 10px;
+	bottom: 70px;
+	-webkit-transition-delay: 0.2s;
+}
+
+p#image-paragraph #image-3 {
+	left: 300px;
+	bottom: -60px;
+	-webkit-transition-delay: .4s;
+}
+
+p#image-paragraph #image-4 {
+	right: 90px;
+	top: -100px;
+	-webkit-transition-delay: .6s;	
+}
+
+
+/* sliding elements */
+
+#sliding-paragraph {
+	height: 230px;
+}
+
+.slide-out, .slide-in {
+	display: block;
+	top: 0px;
+	left: 0px;
+	position: absolute;
+	-webkit-transition: all 300ms ease-in-out;
+
+}
+
+/* using transtions, you can move elements along the x or y axis */
+
+.slide-in {
+	opacity: 0;
+	-webkit-transform: translate(400px, 0);
+}
+
+/* when you hover on #paragraph-3, we're adjusting the x position of the .slide-out text, and .slide-in */
+
+#sliding-paragraph:hover .slide-out {
+	opacity: 0;
+	-webkit-transform: translate(-400px, 0);
+}
+
+#sliding-paragraph:hover .slide-in {
+	opacity: 1;
+	-webkit-transform: translate(0px, 0);
+}
+
+
+/* hovering on the #shape-paragraph, adjusts the shape behind it */
+
+#shape-paragraph {
+	position: relative;
+	
+}
+
+#square {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    display: block;
+    top: 50%;
+    margin-top: -130px;
+    left: 50%;
+    margin-left: -100px;
+    background-color: yellow;
+
+	-webkit-transform: rotate(45deg);
+	-webkit-transition: all 500ms ease-in-out;
+
+}
+
+#shape-paragraph:hover #square {
+	background-color: orange; 
+	border-radius: 100px;	
+
+	-webkit-transform: scale(2.25); 
+}
+
+/* hovering on the #shape itself, adjusts the square's color and shape */
+
+
+#square2 {
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin-bottom: 80px;
+    background-color: black;
+	-webkit-transition: all 500ms ease-in-out;
+
+}
+
+#square2:hover{
+	background-color: blue; 
+	border-radius: 100px;	
+
+	-webkit-transform: scale(2.25); 
+}
+
+
+/* tooltip */
+
+.tooltip {
+	position: relative;
+	color: #ccc;
+
+	-webkit-transition: all 500ms ease-in-out;	
+}
+
+/* this text will appear as a tooltip when hovering on .tooltip */
+
+.tooltip .tooltip-text { 
+	background: black;
+	position: absolute;
+	top: -30px;
+	width: 110px;
+	margin-left: -5px;
+	color: white;
+	font-size: 15px;
+	padding: 10px;
+	font-family: "helvetica";
+	opacity: 0;
+	text-align: center;
+	-webkit-transition: all 500ms ease-in-out;
+
+}
+
+.tooltip:hover {
+	color: black;
+}
+
+.tooltip:hover .tooltip-text {
+	opacity: 1;
+}
+
+
+/* dimensional hovers */
+
+#three-dimensional {
+    z-index: 1;	
+}
+
+#screenshot {
+    width: 400px; 
+    position: absolute;
+	top: -50px;
+	left: calc(50% - 285px);
+	display: block;
+	filter: blur(15px);
+	z-index: 0;
+	transition: 500ms all;
+	animation: rotating 45s linear infinite;
+}
+
+#three-dimensional:hover #screenshot {
+    filter: blur(0px);
+    z-index: 2;
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate3d(1, -1, 0, 0deg);
+  }
+  to {
+    transform: rotate3d(1, -1, 0, 360deg);
+  }
+}
+
+
+/* useful */
+
+.top {
+	z-index: 1;
+	position: relative;
+}
